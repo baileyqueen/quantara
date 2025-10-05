@@ -1,0 +1,15 @@
+index html(homepage with login and logout)                                                  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Auth0 App</title>
+</head>
+<body>
+  <h1>Welcome to My App</h1>
+  <div id="user-info"></div>
+  <button id="login-btn" onclick="login()">Log In with Auth0</button>
+  <button id="logout-btn" onclick="logout()" style="display:none;">Log Out</button>
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

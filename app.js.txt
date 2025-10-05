@@ -1,0 +1,39 @@
+app.js                                                                                 let auth0 = null;
+
+async function init() {
+  auth0 = await createAuth0Client({
+    domain: 'dev-py4i4pu6byoraduz.us.auth0.com',
+    client_id: 'eeUHcvIrZ2AS8Lj6vT0ebSuR8P3dCWW9', // From Auth0 dashboard
+    redirect_uri: window.location.origin + '/callback.html' // Already set up
+  });
+
+  const isAuthenticated = await auth0.isAuthenticated();
+  if (isAuthenticated) {
+    const user = await auth0.getUser();
+    document.getElementById('user-info').innerHTML = `Welcome, ${user.name}!`;
+    document.getElementById('login-btn').style.display = 'none';
+    document.getElementById('logout-btn').style.display = 'inline';
+  }
+}
+
+async function login() {
+  await auth0.loginWithRedirect();
+}
+
+async function logout() {
+  auth0.logout({
+    returnTo: window.location.origin // Matches Allowed Logout URLs
+  });
+}
+
+async function handleCallback() {
+  if (window.location.pathname === '/callback.html') {
+    await auth0.handleRedirectCallback();
+    window.location.href = '/';
+  }
+}
+
+window.onload = async () => {
+  await init();
+  await handleCallback();
+};
