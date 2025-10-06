@@ -1,4 +1,4 @@
-support html                                                                                   <!DOCTYPE html>
+support.html                                                                                   <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,4 +18,5 @@ support html                                                                    
   <h2 id="faq-password">Forgot Password</h2>
   <p>Use the 'Forgot Password' link on the login page to reset it via email.</p>
 </body>
+
 </html>
